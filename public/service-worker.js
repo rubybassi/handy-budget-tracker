@@ -6,15 +6,13 @@ const FILES_TO_CACHE = [
   '/index.js',
   '/index.html',
   '/styles.css',
+  '/db.js'
 ];
 // install
 self.addEventListener('install', function (evt) {
-  // pre cache all static assets
   evt.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
   );
-  // tell the browser to activate this service worker immediately once it
-  // has finished installing
   self.skipWaiting();
 });
 // activate
